@@ -65,8 +65,12 @@ public class DIYarrayList<T> implements List<T> {
 
     @Override
     public boolean add(T e) {
-        if(size==arr.length)
-            arr = Arrays.copyOf(arr,size+1);
+        if(size==arr.length) {
+            if(size==0)
+                arr = Arrays.copyOf(arr, 10);
+            else
+                arr = Arrays.copyOf(arr, size + (size>>1));
+        }
         arr[size++]=e;
         return true;
     }
@@ -112,26 +116,26 @@ public class DIYarrayList<T> implements List<T> {
 
     @Override
     public T get(int index) {
-        indexError(index);
+        checkIndex(index);
         return (T) arr[index];
     }
 
     @Override
     public T set(int index, T element) {
-        indexError(index);
+        checkIndex(index);
         T oldElement=(T) arr[index];
         arr[index]=element;
         return oldElement;
     }
 
-    void indexError(int index){
-        if(index>=size)
+    void checkIndex(int index){
+        if((index>=size)||(index<0))
             throw new IndexOutOfBoundsException();
     }
 
     @Override
     public void add(int index, T element) {
-
+        throw new UnsupportedOperationException();
     }
 
     @Override
