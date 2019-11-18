@@ -14,7 +14,6 @@ public class Listener implements NotificationListener {
             String action = i.getGcAction();
             long duration = i.getGcInfo().getDuration();
 
-            new printer().print(action,duration);
         }
     }
 }
