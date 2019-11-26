@@ -1,29 +1,30 @@
-package pac;
+package ru.Otus.HomeWorks.DIYList;
 
 import java.util.*;
-
 public class DIYarrayList<T> implements List<T> {
-    private static final Object [] EMPTY =new Object [] {};
+    private static final Object[] EMPTY = new Object[]{};
+    public static final int ZERO = 0;
+    private static final int DEFAULT_CAPACITY = 10;
     private Object[] arr;
     private int size;
 
 
-    public DIYarrayList(){
-        arr=EMPTY;
+    public DIYarrayList() {
+        arr = EMPTY;
     }
 
-    public DIYarrayList (int capacity){
-        if(capacity>0)
-            arr=new Object [capacity];
-        else if(capacity==0)
-            arr=EMPTY;
+    public DIYarrayList(int capacity) {
+        if (capacity > ZERO)
+            arr = new Object[capacity];
+        else if (capacity == ZERO)
+            arr = EMPTY;
         else
-            throw new IllegalArgumentException("Illegal Capacity"+capacity);
+            throw new IllegalArgumentException("Illegal Capacity" + capacity);
     }
 
-    public DIYarrayList(Collection<? extends T> e){
-        arr=e.toArray();
-        if ((size = arr.length) != 0) {
+    public DIYarrayList(Collection<? extends T> e) {
+        arr = e.toArray();
+        if ((size = arr.length) != ZERO) {
             if (arr.getClass() != Object[].class)
                 arr = Arrays.copyOf(arr, size, Object[].class);
         } else {
@@ -39,7 +40,7 @@ public class DIYarrayList<T> implements List<T> {
 
     @Override
     public boolean isEmpty() {
-        return size ==0;
+        return size == ZERO;
     }
 
     @Override
@@ -65,13 +66,13 @@ public class DIYarrayList<T> implements List<T> {
 
     @Override
     public boolean add(T e) {
-        if(size==arr.length) {
-            if(size==0)
-                arr = Arrays.copyOf(arr, 10);
+        if (size == arr.length) {
+            if (size == ZERO)
+                arr = Arrays.copyOf(arr, DEFAULT_CAPACITY);
             else
-                arr = Arrays.copyOf(arr, size + (size>>1));
+                arr = Arrays.copyOf(arr, size + (size >> 1));
         }
-        arr[size++]=e;
+        arr[size++] = e;
         return true;
     }
 
@@ -87,10 +88,10 @@ public class DIYarrayList<T> implements List<T> {
 
     @Override
     public boolean addAll(Collection<? extends T> c) {
-        Object [] a=c.toArray();
-        arr=Arrays.copyOf(arr,size+c.size());
-        System.arraycopy(a, 0, arr, size,c.size());
-        size+=c.size();
+        Object[] a = c.toArray();
+        arr = Arrays.copyOf(arr, size + c.size());
+        System.arraycopy(a, ZERO, arr, size, c.size());
+        size += c.size();
         return false;
     }
 
@@ -123,13 +124,13 @@ public class DIYarrayList<T> implements List<T> {
     @Override
     public T set(int index, T element) {
         checkIndex(index);
-        T oldElement=(T) arr[index];
-        arr[index]=element;
+        T oldElement = (T) arr[index];
+        arr[index] = element;
         return oldElement;
     }
 
-    void checkIndex(int index){
-        if((index>=size)||(index<0))
+    void checkIndex(int index) {
+        if ((index >= size) || (index < ZERO))
             throw new IndexOutOfBoundsException();
     }
 
@@ -155,7 +156,7 @@ public class DIYarrayList<T> implements List<T> {
 
     @Override
     public ListIterator<T> listIterator() {
-        return new ListItr (0);
+        return new ListItr(ZERO);
     }
 
     @Override
@@ -172,7 +173,8 @@ public class DIYarrayList<T> implements List<T> {
         int cursor;
         int lastRet = -1;
 
-        Itr() {}
+        Itr() {
+        }
 
         public boolean hasNext() {
             return cursor != size;
@@ -221,7 +223,7 @@ public class DIYarrayList<T> implements List<T> {
         }
 
         public void set(T e) {
-            if (lastRet < 0)
+            if (lastRet < ZERO)
                 throw new IllegalStateException();
 
             try {

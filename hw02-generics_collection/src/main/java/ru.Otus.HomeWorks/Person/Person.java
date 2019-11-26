@@ -1,4 +1,4 @@
-package pac;
+package ru.Otus.HomeWorks.Person;
 
 public class person implements Comparable<person>{
     private String name;

@@ -1,4 +1,4 @@
-package pac;
+package ru.Otus.HomeWorks.Person;
 
 import java.util.Comparator;
 

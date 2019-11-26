@@ -1,4 +1,7 @@
-package pac;
+package ru.Otus.HomeWorks;
+
+import ru.otus.homework.DIY.DIYarrayList;
+import ru.otus.homework.Person.Person;
 
 import java.util.*;
 
