@@ -1,58 +1,60 @@
-package ru.Otus.HomeWorks;
+package ru.otus.homeworks;
 
-import ru.otus.homework.DIY.DIYarrayList;
-import ru.otus.homework.Person.Person;
+
+import ru.otus.homeworks.diylist.DIYarrayList;
+import ru.otus.homeworks.person.Person;
+import ru.otus.homeworks.person.PersonComporator;
 
 import java.util.*;
 
-public class main {
+public class Main {
     public static void main(String args []) {
 
-        DIYarrayList<person> list = new DIYarrayList<>();
-        list.add(new person("Smith",100));
-        list.add(new person("Johnson",95));
-        list.add(new person("Williams",104));
-        list.add(new person("Jones",100));
-        list.add(new person("King",135));
-        list.add(new person("Brown",85));
-        list.add(new person("Davis",100));
-        list.add(new person("Miller",129));
-        list.add(new person("Wilson",104));
-        list.add(new person("Taylor",130));
-        list.add(new person("Anderson",103));
-        list.add(new person("Thomas",119));
-        list.add(new person("Jackson",100));
-        list.add(new person("White",95));
-        list.add(new person("Harris",99));
-        list.add(new person("Martin",100));
-        list.add(new person("Thompson",88));
-        list.add(new person("Garcia",110));
-        list.add(new person("Martinez",121));
-        list.add(new person("Robinson",115));
-        list.add(new person("Clark",100));
-        list.add(new person("Rodriguez",111));
-        list.add(new person("Lewis",118));
-        list.add(new person("Lee",120));
+        DIYarrayList<Person> list = new DIYarrayList<>();
+        list.add(new Person("Smith",100));
+        list.add(new Person("Johnson",95));
+        list.add(new Person("Williams",104));
+        list.add(new Person("Jones",100));
+        list.add(new Person("King",135));
+        list.add(new Person("Brown",85));
+        list.add(new Person("Davis",100));
+        list.add(new Person("Miller",129));
+        list.add(new Person("Wilson",104));
+        list.add(new Person("Taylor",130));
+        list.add(new Person("Anderson",103));
+        list.add(new Person("Thomas",119));
+        list.add(new Person("Jackson",100));
+        list.add(new Person("White",95));
+        list.add(new Person("Harris",99));
+        list.add(new Person("Martin",100));
+        list.add(new Person("Thompson",88));
+        list.add(new Person("Garcia",110));
+        list.add(new Person("Martinez",121));
+        list.add(new Person("Robinson",115));
+        list.add(new Person("Clark",100));
+        list.add(new Person("Rodriguez",111));
+        list.add(new Person("Lewis",118));
+        list.add(new Person("Lee",120));
 
         print(list);
 
 
-        Collections.addAll(list,new person("Walker",100),new person("Hall",101));
+        Collections.addAll(list,new Person("Walker",100),new Person("Hall",101));
         System.out.println("\nДобавление новых элементов методом Collections.addAll()");
         print(list);
 
 
-        DIYarrayList<person> list1 = new DIYarrayList<>(list);
+        DIYarrayList<Person> list1 = new DIYarrayList<>(list);
         Collections.copy(list1,list);
         System.out.println("\nСоздание копии list методом Collections.copy()");
         print(list1);
 
-        Collections.sort(list);
+        Collections.sort(list, new PersonComporator());
         System.out.println("\nСортировка листа по значениям IQ, методом Collections.sort()");
-        print(list1);
+        print(list);
     }
 
-    private static void print(DIYarrayList<person> list) {
+    private static void print(DIYarrayList<Person> list) {
         System.out.println();
         for (int i = 0; i < list.size(); i++) {
             System.out.println(list.get(i));

@@ -1,26 +1,21 @@
-package ru.Otus.HomeWorks.Person;
+package ru.otus.homeworks.person;
 
-public class person implements Comparable<person>{
+public class Person /*implements Comparable<Person>*/{
     private String name;
-    private int IQ;
+    private int iQ;
 
-    public person(String name,int IQ){
+
+    public Person(String name, int iQ){
         this.name=name;
-        this.IQ=IQ;
+        this.iQ =iQ;
     }
 
     @Override
     public String toString() {
-        return name + ", "+IQ;
+        return name + ", "+ iQ;
     }
 
-    @Override
-    public int compareTo (person o){
-        return this.IQ-o.IQ;
+    public int getiQ() {
+        return iQ;
     }
-
-    public String getName() {
-        return name;
-    }
-
 }

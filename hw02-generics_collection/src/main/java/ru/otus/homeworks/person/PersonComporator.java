@@ -1,10 +1,10 @@
-package ru.Otus.HomeWorks.Person;
+package ru.otus.homeworks.person;
 
 import java.util.Comparator;
 
-public class c implements Comparator<person> {
+public class PersonComporator implements Comparator<Person> {
 
-    public int compare(person a,person b){
-        return a.getName().compareTo(b.getName());
+    public int compare(Person a, Person b){
+        return a.getiQ() -b.getiQ();
     }
 }
