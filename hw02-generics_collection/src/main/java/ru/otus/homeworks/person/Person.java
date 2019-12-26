@@ -1,6 +1,6 @@
 package ru.otus.homeworks.person;
 
-public class Person /*implements Comparable<Person>*/{
+public class Person {
     private String name;
     private int iQ;
 
